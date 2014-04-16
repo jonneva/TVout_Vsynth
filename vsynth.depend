@@ -1,0 +1,1801 @@
+# depslib dependency file v1.0
+1394786261 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\main.cpp
+	<SFML/Graphics.hpp>
+	"runtime.h"
+	"TVout.h"
+	"fontALL.h"
+	"schematic.h"
+	"TVOlogo.h"
+
+1394876188 "
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/RenderTexture.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/Shader.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/ConvexShape.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/Graphics/View.hpp>
+
+1373527127 hics/View.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window.hpp
+	<SFML/System.hpp>
+	<SFML/Window/Context.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/Event.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/Window.hpp>
+	<SFML/Window/WindowStyle.hpp>
+
+1373527127 ow/WindowStyle.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system.hpp
+	<SFML/Config.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Err.hpp>
+	<SFML/System/InputStream.hpp>
+	<SFML/System/Lock.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Sleep.hpp>
+	<SFML/System/String.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/ThreadLocal.hpp>
+	<SFML/System/ThreadLocalPtr.hpp>
+	<SFML/System/Utf.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/Vector3.hpp>
+
+1373527127 em/Vector3.hpp>
+
+1374406153 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\config.hpp
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\clock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1373527127 em/Time.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\export.hpp
+	<SFML/Config.hpp>
+
+1373527127 ig.hpp>
+
+1377090081 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\time.hpp
+	<SFML/System/Export.hpp>
+
+1373527127 em/Export.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\err.hpp
+	<SFML/System/Export.hpp>
+	<ostream>
+
+1394838057 
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\inputstream.hpp
+	<SFML/Config.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\lock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1373527127 em/NonCopyable.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\noncopyable.hpp
+	<SFML/System/Export.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\mutex.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\sleep.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1377864177 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\string.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Utf.hpp>
+	<locale>
+	<string>
+	<SFML/System/String.inl>
+
+1377864177 em/String.inl>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\utf.hpp
+	<SFML/Config.hpp>
+	<algorithm>
+	<locale>
+	<string>
+	<cstdlib>
+	<SFML/System/Utf.inl>
+
+1373527127 em/Utf.inl>
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\utf.inl
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\string.inl
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\thread.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<cstdlib>
+	<SFML/System/Thread.inl>
+
+1373527127 em/Thread.inl>
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\thread.inl
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\threadlocal.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<cstdlib>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\threadlocalptr.hpp
+	<SFML/System/ThreadLocal.hpp>
+	<SFML/System/ThreadLocalPtr.inl>
+
+1373527127 em/ThreadLocalPtr.inl>
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\threadlocalptr.inl
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\vector2.hpp
+	<SFML/System/Vector2.inl>
+
+1373527127 em/Vector2.inl>
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\vector2.inl
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\vector3.hpp
+	<SFML/System/Vector3.inl>
+
+1373527127 em/Vector3.inl>
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\system\vector3.inl
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\context.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\export.hpp
+	<SFML/Config.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\glresource.hpp
+	<SFML/Window/Export.hpp>
+
+1373527127 ow/Export.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\contextsettings.hpp
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\event.hpp
+	<SFML/Config.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+
+1373527127 ow/Mouse.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\joystick.hpp
+	<SFML/Window/Export.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\keyboard.hpp
+	<SFML/Window/Export.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\mouse.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/Vector2.hpp>
+
+1373527127 em/Vector2.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\videomode.hpp
+	<SFML/Window/Export.hpp>
+	<vector>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\window.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/WindowHandle.hpp>
+	<SFML/Window/WindowStyle.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/String.hpp>
+
+1373527127 em/String.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\windowhandle.hpp
+	<SFML/Config.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\window\windowstyle.hpp
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\blendmode.hpp
+
+1376314921 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\color.hpp
+	<SFML/Graphics/Export.hpp>
+
+1376314921 hics/Export.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\export.hpp
+	<SFML/Config.hpp>
+
+1376314921 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\font.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/String.hpp>
+	<map>
+	<string>
+	<vector>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\glyph.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1373527127 hics/Rect.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\rect.hpp
+	<SFML/System/Vector2.hpp>
+	<algorithm>
+	<SFML/Graphics/Rect.inl>
+
+1373527127 hics/Rect.inl>
+
+1380247898 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\rect.inl
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\texture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/GlResource.hpp>
+
+1373527127 ow/GlResource.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\image.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<string>
+	<vector>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\renderstates.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1373527127 hics/Transform.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\transform.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\rendertexture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+
+1373527127 hics/RenderTarget.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\rendertarget.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\view.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/System/Vector2.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\primitivetype.hpp
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\vertex.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/System/Vector2.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\renderwindow.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/Window.hpp>
+	<string>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\shader.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/Vector3.hpp>
+	<map>
+	<string>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\shape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/Vector2.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\drawable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+
+1373527127 hics/RenderStates.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\transformable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\vertexarray.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<vector>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\circleshape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1373527127 hics/Shape.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\rectangleshape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\convexshape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<vector>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\sprite.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1373527127 c:\documents and settings\tuomo\omat tiedostot\windev\sfml-tdm471x32\sfml-tdm471x32\include\sfml\graphics\text.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/String.hpp>
+	<string>
+	<vector>
+
+1394779412 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvout.h
+	<stdint.h>
+	<stdlib.h>
+
+1394786326 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvout.cpp
+	<SFML/Graphics.hpp>
+	"TVout.h"
+	"runtime.h"
+
+1288900708 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\fontall.h
+	"font4x6.h"
+	"font6x8.h"
+	"font8x8.h"
+	"font8x8ext.h"
+
+1288900708 t.h"
+
+1394744640 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvoutfonts\font4x6.h
+
+1394744648 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvoutfonts\font6x8.h
+
+1394744653 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvoutfonts\font8x8.h
+
+1394744658 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvoutfonts\font8x8ext.h
+
+1394744665 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\schematic.h
+
+1394744671 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvologo.h
+
+1394779305 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\font4x6.cpp
+	"font4x6.h"
+
+1394779313 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\font6x8.cpp
+	"font6x8.h"
+
+1394779319 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\font8x8.cpp
+	"font8x8.h"
+
+1394779327 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\font8x8ext.cpp
+	"font8x8ext.h"
+
+1394779918 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\tvoutprint.cpp
+	<math.h>
+	"TVout.h"
+
+1394782189 source:c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\schematic.cpp
+	"schematic.h"
+
+1394782189 .h"
+
+1394786181 c:\documents and settings\tuomo\omat tiedostot\windev\roadtest\runtime.h
+
+1394779305 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font4x6.cpp
+	"font4x6.h"
+
+1394744640 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font4x6.h
+
+1394779313 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font6x8.cpp
+	"font6x8.h"
+
+1394744648 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font6x8.h
+
+1394779319 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font8x8.cpp
+	"font8x8.h"
+
+1394744653 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font8x8.h
+
+1394779327 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font8x8ext.cpp
+	"font8x8ext.h"
+
+1394744658 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\font8x8ext.h
+
+1394782189 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\schematic.cpp
+	"schematic.h"
+
+1394744665 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\schematic.h
+
+1394840322 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\sfmlrendertv.cpp
+	<SFML/Graphics.hpp>
+	"wrapper.h"
+	"TVout.h"
+
+1394842061 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<math.h>
+	"wrapper.h"
+	"TVout.h"
+	"fontALL.h"
+	"schematic.h"
+	"TVOlogo.h"
+
+1394837776 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\wrapper.h
+	<SFML/Graphics.hpp>
+	"TVout.h"
+
+1394838057 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\tvout.h
+	<stdint.h>
+	<stdlib.h>
+
+1288900708 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutfonts\fontall.h
+	"font4x6.h"
+	"font6x8.h"
+	"font8x8.h"
+	"font8x8ext.h"
+
+1394744671 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\tvologo.h
+
+1394836894 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\tvologo.cpp
+	"TVOlogo.h"
+
+1394839895 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\tvout.cpp
+	<SFML/Graphics.hpp>
+	"TVout.h"
+	"wrapper.h"
+
+1394841265 source:c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\tvoutprint.cpp
+	<math.h>
+	"TVout.h"
+	"wrapper.h"
+
+1394842137 c:\documents and settings\tuomo\omat tiedostot\windev\tvout\tvoutsfml\wrapper.h
+	<SFML/Graphics.hpp>
+	"TVout.h"
+
+1394779305 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font4x6.cpp
+	"font4x6.h"
+
+1394744640 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font4x6.h
+
+1394779313 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font6x8.cpp
+	"font6x8.h"
+
+1394744648 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font6x8.h
+
+1394779319 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font8x8.cpp
+	"font8x8.h"
+
+1394744653 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font8x8.h
+
+1394779327 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font8x8ext.cpp
+	"font8x8ext.h"
+
+1394744658 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\font8x8ext.h
+
+1394782189 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\schematic.cpp
+	"schematic.h"
+
+1394744665 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\schematic.h
+
+1394876330 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\sfmlrendertv.cpp
+	<SFML/Graphics.hpp>
+	"wrapper.h"
+	"TVout.h"
+
+1394876296 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\wrapper.h
+	<SFML/Graphics.hpp>
+	"TVout.h"
+
+1394838057 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\tvout.h
+	<stdint.h>
+	<stdlib.h>
+
+1394836894 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\tvologo.cpp
+	"TVOlogo.h"
+
+1394744671 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\tvologo.h
+
+1394839895 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\tvout.cpp
+	<SFML/Graphics.hpp>
+	"TVout.h"
+	"wrapper.h"
+
+1394841265 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutsfml\tvoutprint.cpp
+	<math.h>
+	"TVout.h"
+	"wrapper.h"
+
+1394844025 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroid_bitmaps.cpp
+	"asteroid_bitmaps.h"
+
+1394844025 bitmaps.h"
+
+1394844012 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroid_bitmaps.h
+
+1394844046 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroid_vertices.cpp
+	"asteroid_vertices.h"
+
+1394844046 vertices.h"
+
+1394844040 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroid_vertices.h
+
+1394844059 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroids_font.cpp
+	"asteroids_font.h"
+
+1394886157 _font.h"
+
+1394844052 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroids_font.h
+
+1394844077 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\explosion_bitmaps.cpp
+	"explosion_bitmaps.h"
+
+1394844077 _bitmaps.h"
+
+1394844068 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\explosion_bitmaps.h
+
+1394844096 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\explosion_frequencies.cpp
+	"explosion_frequencies.h"
+
+1394844096 _frequencies.h"
+
+1394844084 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\explosion_frequencies.h
+
+1394844114 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\hackvision_logo_bitmap.cpp
+	"hackvision_logo_bitmap.h"
+
+1394844114 n_logo_bitmap.h"
+
+1394844109 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\hackvision_logo_bitmap.h
+
+1394876188 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\controllers\buttoncontroller.cpp
+	<stdlib.h>
+	<string.h>
+	<inttypes.h>
+	<SFML/Graphics.hpp>
+	"ButtonController.h"
+	"wrapper.h"
+
+1394844257 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\controllers\buttoncontroller.h
+	<inttypes.h>
+
+1394844257 h>
+
+1394886157 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<math.h>
+	"wrapper.h"
+	"TVout.h"
+	"fontALL.h"
+	"schematic.h"
+	"TVOlogo.h"
+	<Controllers.h>
+	"Asteroids.h"
+	"title_bitmap.h"
+	"hackvision_logo_bitmap.h"
+	"asteroid_bitmaps.h"
+	"asteroid_vertices.h"
+	"ship_bitmaps.h"
+	"ship_vertices.h"
+	"saucer_bitmaps.h"
+	"saucer_vertices.h"
+	"explosion_bitmaps.h"
+	"ship_explosion_bitmaps.h"
+	"explosion_frequencies.h"
+	"asteroids_font.h"
+
+1288900708 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\tvoutfonts\fontall.h
+	"font4x6.h"
+	"font6x8.h"
+	"font8x8.h"
+	"font8x8ext.h"
+
+1394844806 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\controllers\controllers.h
+	"ButtonController.h"
+
+1394844806 troller.h"
+
+1394875734 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\asteroids.h
+
+1394844828 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\title_bitmap.h
+
+1394844836 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\ship_bitmaps.h
+
+1394844845 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\ship_vertices.h
+
+1394844853 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\saucer_bitmaps.h
+
+1394844862 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\saucer_vertices.h
+
+1394844871 c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\ship_explosion_bitmaps.h
+
+1394844914 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\saucer_bitmaps.cpp
+	"saucer_bitmaps.h"
+
+1394844914 tmaps.h"
+
+1394844922 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\saucer_vertices.cpp
+	"saucer_vertices.h"
+
+1394844922 rtices.h"
+
+1394844929 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\ship_bitmaps.cpp
+	"ship_bitmaps.h"
+
+1394844929 aps.h"
+
+1394844935 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\ship_explosion_bitmaps.cpp
+	"ship_explosion_bitmaps.h"
+
+1394844935 osion_bitmaps.h"
+
+1394844940 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\ship_vertices.cpp
+	"ship_vertices.h"
+
+1394844940 ices.h"
+
+1394844946 source:c:\documents and settings\tuomo\omat tiedostot\windev\asteroids\title_bitmap.cpp
+	"title_bitmap.h"
+
+1394844946 map.h"
+
+1394840426 source:/home/jonne/Desktop/SFMLDev/Asteroids/asteroid_bitmaps.cpp
+	"asteroid_bitmaps.h"
+
+1394840414 /home/jonne/Desktop/SFMLDev/Asteroids/asteroid_bitmaps.h
+
+1394840448 source:/home/jonne/Desktop/SFMLDev/Asteroids/asteroid_vertices.cpp
+	"asteroid_vertices.h"
+
+1394840442 /home/jonne/Desktop/SFMLDev/Asteroids/asteroid_vertices.h
+
+1394840460 source:/home/jonne/Desktop/SFMLDev/Asteroids/asteroids_font.cpp
+	"asteroids_font.h"
+
+1394840454 /home/jonne/Desktop/SFMLDev/Asteroids/asteroids_font.h
+
+1394872590 source:/home/jonne/Desktop/SFMLDev/Asteroids/Controllers/ButtonController.cpp
+	<stdlib.h>
+	<string.h>
+	<inttypes.h>
+	<SFML/Graphics.hpp>
+	"ButtonController.h"
+	"wrapper.h"
+
+1394840658 /home/jonne/Desktop/SFMLDev/Asteroids/Controllers/ButtonController.h
+	<inttypes.h>
+
+1397346895 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/wrapper.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"TVout.h"
+
+1394834458 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/TVout.h
+	<stdint.h>
+	<stdlib.h>
+
+1394840478 source:/home/jonne/Desktop/SFMLDev/Asteroids/explosion_bitmaps.cpp
+	"explosion_bitmaps.h"
+
+1394840470 /home/jonne/Desktop/SFMLDev/Asteroids/explosion_bitmaps.h
+
+1394840498 source:/home/jonne/Desktop/SFMLDev/Asteroids/explosion_frequencies.cpp
+	"explosion_frequencies.h"
+
+1394840486 /home/jonne/Desktop/SFMLDev/Asteroids/explosion_frequencies.h
+
+1394840516 source:/home/jonne/Desktop/SFMLDev/Asteroids/hackvision_logo_bitmap.cpp
+	"hackvision_logo_bitmap.h"
+
+1394840510 /home/jonne/Desktop/SFMLDev/Asteroids/hackvision_logo_bitmap.h
+
+1397344026 source:/home/jonne/Desktop/SFMLDev/Asteroids/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<math.h>
+	"wrapper.h"
+	"TVout.h"
+	"fontALL.h"
+	"schematic.h"
+	"TVOlogo.h"
+	"../alsa/asoundlib.h"
+	<SFML/Audio.hpp>
+	<Controllers.h>
+	"Asteroids.h"
+	"title_bitmap.h"
+	"hackvision_logo_bitmap.h"
+	"asteroid_bitmaps.h"
+	"asteroid_vertices.h"
+	"ship_bitmaps.h"
+	"ship_vertices.h"
+	"saucer_bitmaps.h"
+	"saucer_vertices.h"
+	"explosion_bitmaps.h"
+	"ship_explosion_bitmaps.h"
+	"explosion_frequencies.h"
+	"asteroids_font.h"
+
+1288897108 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/fontALL.h
+	"font4x6.h"
+	"font6x8.h"
+	"font8x8.h"
+	"font8x8ext.h"
+
+1394741042 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font4x6.h
+
+1394741050 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font6x8.h
+
+1394741054 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font8x8.h
+
+1394741060 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font8x8ext.h
+
+1394741066 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/schematic.h
+
+1394741072 /home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/TVOlogo.h
+
+1394841208 /home/jonne/Desktop/SFMLDev/Asteroids/Controllers/Controllers.h
+	"ButtonController.h"
+
+1394872136 /home/jonne/Desktop/SFMLDev/Asteroids/Asteroids.h
+
+1394841230 /home/jonne/Desktop/SFMLDev/Asteroids/title_bitmap.h
+
+1394841238 /home/jonne/Desktop/SFMLDev/Asteroids/ship_bitmaps.h
+
+1394841246 /home/jonne/Desktop/SFMLDev/Asteroids/ship_vertices.h
+
+1394841254 /home/jonne/Desktop/SFMLDev/Asteroids/saucer_bitmaps.h
+
+1394841264 /home/jonne/Desktop/SFMLDev/Asteroids/saucer_vertices.h
+
+1394841272 /home/jonne/Desktop/SFMLDev/Asteroids/ship_explosion_bitmaps.h
+
+1394841316 source:/home/jonne/Desktop/SFMLDev/Asteroids/saucer_bitmaps.cpp
+	"saucer_bitmaps.h"
+
+1394841324 source:/home/jonne/Desktop/SFMLDev/Asteroids/saucer_vertices.cpp
+	"saucer_vertices.h"
+
+1394841330 source:/home/jonne/Desktop/SFMLDev/Asteroids/ship_bitmaps.cpp
+	"ship_bitmaps.h"
+
+1394841336 source:/home/jonne/Desktop/SFMLDev/Asteroids/ship_explosion_bitmaps.cpp
+	"ship_explosion_bitmaps.h"
+
+1394841342 source:/home/jonne/Desktop/SFMLDev/Asteroids/ship_vertices.cpp
+	"ship_vertices.h"
+
+1394841348 source:/home/jonne/Desktop/SFMLDev/Asteroids/title_bitmap.cpp
+	"title_bitmap.h"
+
+1394775706 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font4x6.cpp
+	"font4x6.h"
+
+1394775714 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font6x8.cpp
+	"font6x8.h"
+
+1394775720 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font8x8.cpp
+	"font8x8.h"
+
+1394775728 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutfonts/font8x8ext.cpp
+	"font8x8ext.h"
+
+1394778590 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/schematic.cpp
+	"schematic.h"
+
+1394872732 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/SFMLRenderTV.cpp
+	<SFML/Graphics.hpp>
+	"wrapper.h"
+	"TVout.h"
+
+1394833296 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/TVOlogo.cpp
+	"TVOlogo.h"
+
+1397339730 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/TVout.cpp
+	<SFML/Graphics.hpp>
+	"TVout.h"
+	"wrapper.h"
+
+1394837666 source:/home/jonne/Desktop/SFMLDev/Asteroids/TVoutSFML/TVoutPrint.cpp
+	<math.h>
+	"TVout.h"
+	"wrapper.h"
+
+1380551574 /usr/include/stdlib.h
+	<features.h>
+	<stddef.h>
+	<bits/waitflags.h>
+	<bits/waitstatus.h>
+	<xlocale.h>
+	<sys/types.h>
+	<alloca.h>
+	<bits/stdlib.h>
+	<bits/stdlib-ldbl.h>
+
+1380551550 /usr/include/features.h
+	<bits/predefs.h>
+	<sys/cdefs.h>
+	<gnu/stubs.h>
+
+1380551552 /usr/include/xlocale.h
+
+1380551574 /usr/include/alloca.h
+	<features.h>
+	<stddef.h>
+
+1380551578 /usr/include/string.h
+	<features.h>
+	<stddef.h>
+	<xlocale.h>
+	<bits/string.h>
+	<bits/string2.h>
+	<bits/string3.h>
+
+1380551574 /usr/include/inttypes.h
+	<features.h>
+	<stdint.h>
+	<stddef.h>
+
+1380551574 /usr/include/stdint.h
+	<features.h>
+	<bits/wchar.h>
+	<bits/wordsize.h>
+
+1374846260 /usr/include/SFML/Graphics.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/RenderTexture.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/Shader.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/ConvexShape.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/Graphics/View.hpp>
+
+1374846260 /usr/include/SFML/Window.hpp
+	<SFML/System.hpp>
+	<SFML/Window/Context.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/Event.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/Window.hpp>
+	<SFML/Window/WindowStyle.hpp>
+
+1374846260 /usr/include/SFML/System.hpp
+	<SFML/Config.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Err.hpp>
+	<SFML/System/InputStream.hpp>
+	<SFML/System/Lock.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Sleep.hpp>
+	<SFML/System/String.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/ThreadLocal.hpp>
+	<SFML/System/ThreadLocalPtr.hpp>
+	<SFML/System/Utf.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/Vector3.hpp>
+
+1374846260 /usr/include/SFML/Config.hpp
+
+1374846260 /usr/include/SFML/System/Clock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1374846260 /usr/include/SFML/System/Export.hpp
+	<SFML/Config.hpp>
+
+1374846260 /usr/include/SFML/System/Time.hpp
+	<SFML/System/Export.hpp>
+
+1374846260 /usr/include/SFML/System/Err.hpp
+	<SFML/System/Export.hpp>
+	<ostream>
+
+1374846260 /usr/include/SFML/System/InputStream.hpp
+	<SFML/Config.hpp>
+
+1374846260 /usr/include/SFML/System/Lock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1374846260 /usr/include/SFML/System/NonCopyable.hpp
+	<SFML/System/Export.hpp>
+
+1374846260 /usr/include/SFML/System/Mutex.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1374846260 /usr/include/SFML/System/Sleep.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1374846260 /usr/include/SFML/System/String.hpp
+	<SFML/System/Export.hpp>
+	<locale>
+	<string>
+
+1374846260 /usr/include/SFML/System/Thread.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<cstdlib>
+	<SFML/System/Thread.inl>
+
+1374846260 /usr/include/SFML/System/Thread.inl
+
+1374846260 /usr/include/SFML/System/ThreadLocal.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<cstdlib>
+
+1374846260 /usr/include/SFML/System/ThreadLocalPtr.hpp
+	<SFML/System/ThreadLocal.hpp>
+	<SFML/System/ThreadLocalPtr.inl>
+
+1374846260 /usr/include/SFML/System/ThreadLocalPtr.inl
+
+1374846260 /usr/include/SFML/System/Utf.hpp
+	<SFML/Config.hpp>
+	<algorithm>
+	<locale>
+	<string>
+	<cstdlib>
+	<SFML/System/Utf.inl>
+
+1374846260 /usr/include/SFML/System/Utf.inl
+
+1374846260 /usr/include/SFML/System/Vector2.hpp
+	<SFML/System/Vector2.inl>
+
+1374846260 /usr/include/SFML/System/Vector2.inl
+
+1374846260 /usr/include/SFML/System/Vector3.hpp
+	<SFML/System/Vector3.inl>
+
+1374846260 /usr/include/SFML/System/Vector3.inl
+
+1374846260 /usr/include/SFML/Window/Context.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1374846260 /usr/include/SFML/Window/Export.hpp
+	<SFML/Config.hpp>
+
+1374846260 /usr/include/SFML/Window/GlResource.hpp
+	<SFML/Window/Export.hpp>
+
+1374846260 /usr/include/SFML/Window/ContextSettings.hpp
+
+1374846260 /usr/include/SFML/Window/Event.hpp
+	<SFML/Config.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+
+1374846260 /usr/include/SFML/Window/Joystick.hpp
+	<SFML/Window/Export.hpp>
+
+1374846260 /usr/include/SFML/Window/Keyboard.hpp
+	<SFML/Window/Export.hpp>
+
+1374846260 /usr/include/SFML/Window/Mouse.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/Vector2.hpp>
+
+1374846260 /usr/include/SFML/Window/VideoMode.hpp
+	<SFML/Window/Export.hpp>
+	<vector>
+
+1374846260 /usr/include/SFML/Window/Window.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/WindowHandle.hpp>
+	<SFML/Window/WindowStyle.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/String.hpp>
+
+1374846260 /usr/include/SFML/Window/WindowHandle.hpp
+	<SFML/Config.hpp>
+
+1374846260 /usr/include/SFML/Window/WindowStyle.hpp
+
+1374846260 /usr/include/SFML/Graphics/BlendMode.hpp
+
+1374846260 /usr/include/SFML/Graphics/Color.hpp
+	<SFML/Graphics/Export.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Export.hpp
+	<SFML/Config.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Font.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/String.hpp>
+	<map>
+	<string>
+	<vector>
+
+1374846260 /usr/include/SFML/Graphics/Glyph.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Rect.hpp
+	<SFML/System/Vector2.hpp>
+	<algorithm>
+	<SFML/Graphics/Rect.inl>
+
+1374846260 /usr/include/SFML/Graphics/Rect.inl
+
+1374846260 /usr/include/SFML/Graphics/Texture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/GlResource.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Image.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<string>
+	<vector>
+
+1374846260 /usr/include/SFML/Graphics/RenderStates.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Transform.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+
+1374846260 /usr/include/SFML/Graphics/RenderTexture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+
+1374846260 /usr/include/SFML/Graphics/RenderTarget.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1374846260 /usr/include/SFML/Graphics/View.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/System/Vector2.hpp>
+
+1374846260 /usr/include/SFML/Graphics/PrimitiveType.hpp
+
+1374846260 /usr/include/SFML/Graphics/Vertex.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/System/Vector2.hpp>
+
+1374846260 /usr/include/SFML/Graphics/RenderWindow.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/Window.hpp>
+	<string>
+
+1374846260 /usr/include/SFML/Graphics/Shader.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/Vector3.hpp>
+	<map>
+	<string>
+
+1374846260 /usr/include/SFML/Graphics/Shape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/Vector2.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Drawable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Transformable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1374846260 /usr/include/SFML/Graphics/VertexArray.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<vector>
+
+1374846260 /usr/include/SFML/Graphics/CircleShape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1374846260 /usr/include/SFML/Graphics/RectangleShape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1374846260 /usr/include/SFML/Graphics/ConvexShape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<vector>
+
+1374846260 /usr/include/SFML/Graphics/Sprite.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1374846260 /usr/include/SFML/Graphics/Text.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/String.hpp>
+	<string>
+	<vector>
+
+1116944071 source:/home/jonne/Desktop/SFMLDev/alsa/src/pcm/pcm.c
+	<stdio.h>
+	<string.h>
+	<malloc.h>
+	<stdarg.h>
+	<signal.h>
+	<dlfcn.h>
+	<sys/poll.h>
+	<sys/shm.h>
+	<sys/mman.h>
+	<limits.h>
+	"pcm_local.h"
+
+1380551576 /usr/include/stdio.h
+	<features.h>
+	<stddef.h>
+	<bits/types.h>
+	<libio.h>
+	<stdarg.h>
+	<bits/stdio_lim.h>
+	<bits/sys_errlist.h>
+	<getopt.h>
+	<bits/stdio.h>
+	<bits/stdio2.h>
+	<bits/stdio-ldbl.h>
+
+1380551576 /usr/include/libio.h
+	<_G_config.h>
+	<stdarg.h>
+	<sys/cdefs.h>
+	<bits/stdio-lock.h>
+	<shlib-compat.h>
+	<bits/libio-ldbl.h>
+
+1380551576 /usr/include/_G_config.h
+	<bits/types.h>
+	<stddef.h>
+	<wchar.h>
+	<gconv.h>
+
+1380551579 /usr/include/wchar.h
+	<features.h>
+	<stdio.h>
+	<stdarg.h>
+	<bits/wchar.h>
+	<stddef.h>
+	<wctype.h>
+	<xlocale.h>
+	<xlocale.h>
+	<xlocale.h>
+	<wctype.h>
+	<bits/wchar2.h>
+	<bits/wchar-ldbl.h>
+
+1380551589 /usr/include/wctype.h
+	<features.h>
+	<bits/types.h>
+	<wchar.h>
+	<endian.h>
+	<xlocale.h>
+
+1380551578 /usr/include/endian.h
+	<features.h>
+	<bits/endian.h>
+	<bits/byteswap.h>
+
+1380551551 /usr/include/gconv.h
+	<features.h>
+	<wchar.h>
+	<stddef.h>
+
+1380551584 /usr/include/getopt.h
+	<ctype.h>
+
+1380551568 /usr/include/ctype.h
+	<features.h>
+	<bits/types.h>
+	<endian.h>
+	<xlocale.h>
+
+1380551577 /usr/include/malloc.h
+	<features.h>
+	<stddef.h>
+	<stdio.h>
+
+1380551573 /usr/include/signal.h
+	<features.h>
+	<bits/sigset.h>
+	<bits/types.h>
+	<bits/signum.h>
+	<time.h>
+	<bits/siginfo.h>
+	<bits/sigaction.h>
+	<bits/sigcontext.h>
+	<stddef.h>
+	<bits/sigstack.h>
+	<sys/ucontext.h>
+	<bits/pthreadtypes.h>
+	<bits/sigthread.h>
+
+1380551581 /usr/include/time.h
+	<features.h>
+	<stddef.h>
+	<bits/time.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<xlocale.h>
+
+1380551577 /usr/include/dlfcn.h
+	<features.h>
+	<stddef.h>
+	<bits/dlfcn.h>
+
+1380551550 /usr/include/limits.h
+	<features.h>
+	<bits/wordsize.h>
+	<bits/posix1_lim.h>
+	<bits/posix2_lim.h>
+	<bits/xopen_lim.h>
+
+1116838999 /home/jonne/Desktop/SFMLDev/alsa/src/pcm/pcm_local.h
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	<sys/uio.h>
+	"local.h"
+	"interval.h"
+	"mask.h"
+
+1115813931 /home/jonne/Desktop/SFMLDev/alsa/include/local.h
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<fcntl.h>
+	<assert.h>
+	<endian.h>
+	<stdarg.h>
+	<sys/poll.h>
+	<errno.h>
+	"config.h"
+	<resmgr.h>
+	<sound/asound.h>
+	<sound/asoundef.h>
+	<sound/asequencer.h>
+	"alsa-symbols.h"
+	"version.h"
+	"global.h"
+	"input.h"
+	"output.h"
+	"error.h"
+	"conf.h"
+	"pcm.h"
+	"pcm_plugin.h"
+	"rawmidi.h"
+	"timer.h"
+	"hwdep.h"
+	"control.h"
+	"mixer.h"
+	"seq_event.h"
+	"seq.h"
+	"seqmid.h"
+	"seq_midi_event.h"
+	"conv.h"
+	"instr.h"
+	"list.h"
+
+1380551584 /usr/include/unistd.h
+	<features.h>
+	<bits/posix_opt.h>
+	<bits/environments.h>
+	<bits/types.h>
+	<stddef.h>
+	<bits/confname.h>
+	<getopt.h>
+	<bits/unistd.h>
+
+1380551585 /usr/include/fcntl.h
+	<features.h>
+	<bits/fcntl.h>
+	<bits/types.h>
+	<time.h>
+	<bits/stat.h>
+	<bits/fcntl2.h>
+
+1380551567 /usr/include/assert.h
+	<features.h>
+
+1380551574 /usr/include/errno.h
+	<features.h>
+	<bits/errno.h>
+
+1397280558 /home/jonne/Desktop/SFMLDev/alsa/include/config.h
+
+1116521945 /home/jonne/Desktop/SFMLDev/alsa/include/sound/asound.h
+	<linux/ioctl.h>
+	<linux/types.h>
+	<linux/time.h>
+	<asm/byteorder.h>
+	<endian.h>
+	<sys/time.h>
+	<sys/types.h>
+
+1392788911 /usr/include/linux/ioctl.h
+	<asm/ioctl.h>
+
+1392788912 /usr/include/linux/types.h
+	<asm/types.h>
+	<linux/posix_types.h>
+
+1392788911 /usr/include/linux/posix_types.h
+	<linux/stddef.h>
+	<asm/posix_types.h>
+
+1392788912 /usr/include/linux/stddef.h
+
+1392788912 /usr/include/linux/time.h
+	<linux/types.h>
+
+1034171051 /home/jonne/Desktop/SFMLDev/alsa/include/sound/asoundef.h
+
+1093245894 /home/jonne/Desktop/SFMLDev/alsa/include/sound/asequencer.h
+	<linux/ioctl.h>
+	<sound/asound.h>
+
+1115388369 /home/jonne/Desktop/SFMLDev/alsa/include/alsa-symbols.h
+
+1117199593 /home/jonne/Desktop/SFMLDev/alsa/include/version.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/global.h
+	<time.h>
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/input.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/output.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/error.h
+
+1116944068 /home/jonne/Desktop/SFMLDev/alsa/include/conf.h
+
+1116521944 /home/jonne/Desktop/SFMLDev/alsa/include/pcm.h
+	"pcm_old.h"
+
+1113487271 /home/jonne/Desktop/SFMLDev/alsa/include/pcm_old.h
+
+1105983283 /home/jonne/Desktop/SFMLDev/alsa/include/pcm_plugin.h
+
+1105983283 /home/jonne/Desktop/SFMLDev/alsa/include/rawmidi.h
+
+1116944069 /home/jonne/Desktop/SFMLDev/alsa/include/timer.h
+
+1114788569 /home/jonne/Desktop/SFMLDev/alsa/include/hwdep.h
+
+1116944068 /home/jonne/Desktop/SFMLDev/alsa/include/control.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/mixer.h
+
+1105983283 /home/jonne/Desktop/SFMLDev/alsa/include/seq_event.h
+
+1105983283 /home/jonne/Desktop/SFMLDev/alsa/include/seq.h
+
+1116944069 /home/jonne/Desktop/SFMLDev/alsa/include/seqmid.h
+
+1105983283 /home/jonne/Desktop/SFMLDev/alsa/include/seq_midi_event.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/conv.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/instr.h
+
+985876742 /home/jonne/Desktop/SFMLDev/alsa/include/list.h
+
+1045477284 /home/jonne/Desktop/SFMLDev/alsa/src/pcm/interval.h
+	"interval_inline.h"
+
+1045477285 /home/jonne/Desktop/SFMLDev/alsa/src/pcm/interval_inline.h
+
+1025057051 /home/jonne/Desktop/SFMLDev/alsa/src/pcm/mask.h
+	"mask_inline.h"
+
+1054147755 /home/jonne/Desktop/SFMLDev/alsa/src/pcm/mask_inline.h
+	<sys/types.h>
+
+1380551571 /usr/include/math.h
+	<features.h>
+	<bits/huge_val.h>
+	<bits/huge_valf.h>
+	<bits/huge_vall.h>
+	<bits/inf.h>
+	<bits/nan.h>
+	<bits/mathdef.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathcalls.h>
+	<bits/mathinline.h>
+	<bits/math-finite.h>
+
+1105983271 /home/jonne/Desktop/SFMLDev/alsa/include/asoundlib.h
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<fcntl.h>
+	<assert.h>
+	<endian.h>
+	<sys/poll.h>
+	<errno.h>
+	<stdarg.h>
+	<alsa/asoundef.h>
+	<alsa/version.h>
+	<alsa/global.h>
+	<alsa/input.h>
+	<alsa/output.h>
+	<alsa/error.h>
+	<alsa/conf.h>
+	<alsa/pcm.h>
+	<alsa/rawmidi.h>
+	<alsa/timer.h>
+	<alsa/hwdep.h>
+	<alsa/control.h>
+	<alsa/mixer.h>
+	<alsa/seq_event.h>
+	<alsa/seq.h>
+	<alsa/seqmid.h>
+	<alsa/seq_midi_event.h>
+	<alsa/conv.h>
+	<alsa/instr.h>
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/asoundef.h
+
+1373286773 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/version.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/global.h
+	<time.h>
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/input.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/output.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/error.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/conf.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/pcm.h
+	"pcm_old.h"
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/pcm_old.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/rawmidi.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/timer.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/hwdep.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/control.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/mixer.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/seq_event.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/seq.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/seqmid.h
+
+1373286696 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/seq_midi_event.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/conv.h
+
+1105983281 /home/jonne/Desktop/SFMLDev/alsa/include/alsa/instr.h
+
+1397339143 /usr/include/alsa/asoundlib.h
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<string.h>
+	<fcntl.h>
+	<assert.h>
+	<endian.h>
+	<sys/poll.h>
+	<errno.h>
+	<stdarg.h>
+	<alsa/asoundef.h>
+	<alsa/version.h>
+	<alsa/global.h>
+	<alsa/input.h>
+	<alsa/output.h>
+	<alsa/error.h>
+	<alsa/conf.h>
+	<alsa/pcm.h>
+	<alsa/rawmidi.h>
+	<alsa/timer.h>
+	<alsa/hwdep.h>
+	<alsa/control.h>
+	<alsa/mixer.h>
+	<alsa/seq_event.h>
+	<alsa/seq.h>
+	<alsa/seqmid.h>
+	<alsa/seq_midi_event.h>
+
+1374846260 /usr/include/SFML/Audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1374846260 /usr/include/SFML/Audio/Listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1374846260 /usr/include/SFML/Audio/Export.hpp
+	<SFML/Config.hpp>
+
+1374846260 /usr/include/SFML/Audio/Music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1374846260 /usr/include/SFML/Audio/SoundStream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1374846260 /usr/include/SFML/Audio/SoundSource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1374846260 /usr/include/SFML/Audio/Sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1374846260 /usr/include/SFML/Audio/SoundBuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1374846260 /usr/include/SFML/Audio/SoundBufferRecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1374846260 /usr/include/SFML/Audio/SoundRecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Thread.hpp>
+	<vector>
+
+1394872590 source:/home/jonne/Desktop/SFMLDev/Vsynth/Controllers/ButtonController.cpp
+	<stdlib.h>
+	<string.h>
+	<inttypes.h>
+	<SFML/Graphics.hpp>
+	"ButtonController.h"
+	"wrapper.h"
+
+1394840658 /home/jonne/Desktop/SFMLDev/Vsynth/Controllers/ButtonController.h
+	<inttypes.h>
+
+1397662699 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/wrapper.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"TVout.h"
+
+1394834458 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/TVout.h
+	<stdint.h>
+	<stdlib.h>
+
+1397689793 source:/home/jonne/Desktop/SFMLDev/Vsynth/main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<math.h>
+	"wrapper.h"
+	"TVout.h"
+	"fontALL.h"
+	"schematic.h"
+	"TVOlogo.h"
+	<string.h>
+	<vector>
+	<stdlib.h>
+	<time.h>
+	<Controllers.h>
+
+1288897108 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/fontALL.h
+	"font4x6.h"
+	"font6x8.h"
+	"font8x8.h"
+	"font8x8ext.h"
+
+1394741042 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font4x6.h
+
+1394741050 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font6x8.h
+
+1394741054 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font8x8.h
+
+1394741060 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font8x8ext.h
+
+1394741066 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/schematic.h
+
+1394741072 /home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/TVOlogo.h
+
+1394841208 /home/jonne/Desktop/SFMLDev/Vsynth/Controllers/Controllers.h
+	"ButtonController.h"
+
+1394775706 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font4x6.cpp
+	"font4x6.h"
+
+1394775714 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font6x8.cpp
+	"font6x8.h"
+
+1394775720 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font8x8.cpp
+	"font8x8.h"
+
+1394775728 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutfonts/font8x8ext.cpp
+	"font8x8ext.h"
+
+1394778590 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/schematic.cpp
+	"schematic.h"
+
+1397586687 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/SFMLRenderTV.cpp
+	<SFML/Graphics.hpp>
+	"wrapper.h"
+	"TVout.h"
+
+1394833296 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/TVOlogo.cpp
+	"TVOlogo.h"
+
+1397663758 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/TVout.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"TVout.h"
+	"wrapper.h"
+
+1394837666 source:/home/jonne/Desktop/SFMLDev/Vsynth/TVoutSFML/TVoutPrint.cpp
+	<math.h>
+	"TVout.h"
+	"wrapper.h"
+
