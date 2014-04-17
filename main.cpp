@@ -177,7 +177,7 @@ void increaseCurrentPot(){
     if (lfodepth < 255-8) { lfodepth += 8 ; } else {lfodepth = 255;}
         break;
     case 7:
-    if (lfofreq < 200-5) { lfofreq += 5 ; } else {lfofreq = 200;}
+    if (lfofreq < 400-5) { lfofreq += 5 ; } else {lfofreq = 400;}
         break;
     case 2:
     if (pitch < FMAX-10) { pitch+= 10 ; } else {pitch = FMAX;}
@@ -252,7 +252,7 @@ void updatePots() {
     // row 2
     drawPot(7+POTRAD+0*viewWidth/5,2*viewHeight/3+10,lfowavenum,0,8,5);
     drawPot(7+POTRAD+1*viewWidth/5,2*viewHeight/3+10,lfodepth,0,255,6);
-    drawPot(7+POTRAD+2*viewWidth/5,2*viewHeight/3+10,lfofreq,0,100,7);
+    drawPot(7+POTRAD+2*viewWidth/5,2*viewHeight/3+10,lfofreq,0,400,7);
     drawPot(7+POTRAD+3*viewWidth/5,2*viewHeight/3+10,envwidth,0,255,8);
     drawPot(7+POTRAD+4*viewWidth/5,2*viewHeight/3+10,envfreq,0,255,9);
 
@@ -294,8 +294,8 @@ int getInput() {
 
 void mixbuffers(float pitch1, float pitch2){
     double iLength;
-    Uint16 osc_add1, osc_add2, osc_ticks, env_ticks, pulse_ticks, gap_ticks,
-    osc_ticks2,osc_value1=0,osc_value2 = 0,repeats=0;
+    Uint16 osc_add1, osc_add2, osc_ticks=0, env_ticks, pulse_ticks, gap_ticks,
+    osc_ticks2,osc_value1=0,osc_value2 = 0,repeats=0, repeats2=0;
     Int16 dResult, noise, pulsecount=0, gapcount=0;
     sf::Sound testsnd;
     sf::SoundBuffer testbuf;
@@ -313,6 +313,8 @@ void mixbuffers(float pitch1, float pitch2){
     iLength = osc_ticks*repeats; // make sample length fit the increment
     osc_add1 = 65536/osc_ticks;
     if (pitch2) osc_add2 = 65536/osc_ticks2;
+    if (pitch2) repeats2 = iLength / osc_ticks2;
+
     pulsecount = pulse_ticks; gapcount = pulsecount + gap_ticks;
     std::vector<sf::Int16> FinalSamplesVector;
     FinalSamplesVector.reserve(iLength);
@@ -403,43 +405,47 @@ void mixbuffers(float pitch1, float pitch2){
 
     noise = rand() % 65536 - 32767; envtimer=0;
     // CALCULATE OSCILLATOR 2
-    for(uint32_t i = 0; i < iLength; i++) // the length of the entire sample
+if (pitch2){
+    for(uint32_t i = 0; i < repeats2; i++) // the length of the entire sample
     {
+            for (uint32_t j=0; j<osc_ticks2; j++) {
             if (lfowavenum == 7) { // off
                 dResult = 0;
             }
 
-
             if (lfowavenum == 0) { // square
-                if (osc_value2 < 256*256 / 2) {
+                if (j < osc_ticks2 / 2) {
                 //first half of cycle
                 dResult = 32767;
                 } else {
                 //2nd half of cycle
                 dResult = -32767;
                 }
+                if (dResult == 0) {
+                dResult++;
+                }
             }
 
             if (lfowavenum == 1) { // triangle
-                if (osc_value2 < 256*256 / 2) {
+                if (j < osc_ticks2 / 2) {
                 //first half of cycle
-                dResult = osc_value2 -32767;
+                dResult = j*osc_add2 -32767;
                 } else {
                 //2nd half of cycle
-                dResult = 32767-osc_value2;
+                dResult = 32767-j*osc_add2;
                 }
             }
 
             if (lfowavenum==2) { // sawtooth
-                dResult = osc_value2;
+                dResult = j*osc_add2;
             }
 
             if (lfowavenum==3) { // inverted sawtooth
-                dResult = 32767 - osc_value2;
+                dResult = 32767 - j*osc_add2;
             }
 
             if (lfowavenum == 4) { // 1/4 square
-                if (osc_value2 < 256*256 / 4) {
+                if (j < osc_ticks2 / 4) {
                 //first half of cycle
                 dResult = 32767;
                 } else {
@@ -449,7 +455,7 @@ void mixbuffers(float pitch1, float pitch2){
             }
 
             if (lfowavenum == 5) { // 3/4 square
-                if (osc_value2 < 256*256 / 4) {
+                if (j < osc_ticks2 * 3 / 4) {
                 //first half of cycle
                 dResult = 32767;
                 } else {
@@ -459,7 +465,7 @@ void mixbuffers(float pitch1, float pitch2){
             }
 
             if (lfowavenum == 6) { // noise
-                if (osc_value2 < 256*256 / 2) {
+                if (j < osc_ticks2 / 2) {
                 //first half of cycle
                 dResult = noise;
                 } else {
@@ -467,23 +473,22 @@ void mixbuffers(float pitch1, float pitch2){
                 dResult = -noise;
                 }
             }
-
-
-            if (osc_value2 % osc_ticks == 0) {
+            if ((j+1) % osc_ticks2 == 0) {
              noise =  rand() % 65536 - 32767;
             }
-
-            osc_value2 += osc_add2;
-            envtimer++;
-            if (envwidth < 255 && envtimer) {
-                if (envtimer < env_ticks / 2) {
-                    if (pitch2) {
-                        sbuf2[i] = dResult;}
-                        else {
-                        sbuf2[i] = 0;}
-                }
-            } else { sbuf2[i] = dResult;}
-            if (envtimer>env_ticks) envtimer = 0;
+            if (pulse) {
+                if (i > pulsecount && i < gapcount)
+                    {
+                    sbuf2[i*osc_ticks2+j] = dResult;
+                    } else {
+                    sbuf2[i*osc_ticks2+j] = 0;
+                    }
+                if (i > gapcount) {pulsecount = i + pulse_ticks-gap_ticks; gapcount = pulsecount + gap_ticks;}
+            } else { sbuf2[i*osc_ticks2+j] = dResult; }
+        }
+    }
+} else {
+    for (uint32_t i = 0; i< iLength; i++) sbuf2[i]=0;
     }
 
     // Add TOGETHER OSC1 AND OSC2
