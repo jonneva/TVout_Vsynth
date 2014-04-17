@@ -296,6 +296,25 @@ int getInput() {
 
 
 void mixbuffers(float pitch1, float pitch2){
+    char fname[128];
+    /*char integer_string[32];
+int integer = 1234;
+
+sprintf(integer_string, "%d", integer);
+
+Then to append it to your other char*, use strcat():*/
+    strcpy(fname, "w");
+    strncat(fname, wavenum, sizeof fname);
+    strncat(fname, "_a", sizeof fname);strncat(fname, vol, sizeof fname);
+    strncat(fname, "_f", sizeof fname);strncat(fname, pitch, sizeof fname);
+    strncat(fname, "_A", sizeof fname);strncat(fname, Attack, sizeof fname);
+    strncat(fname, "_D", sizeof fname);strncat(fname, Decay, sizeof fname);
+    strncat(fname, "_w", sizeof fname);strncat(fname, lfowavenum, sizeof fname);
+    strncat(fname, "_a", sizeof fname);strncat(fname, lfodepth, sizeof fname);
+    strncat(fname, "_f", sizeof fname);strncat(fname, lfofreq, sizeof fname);
+    strncat(fname, "_S", sizeof fname);strncat(fname, Sustain, sizeof fname);
+    strncat(fname, "_R", sizeof fname);strncat(fname, Release, sizeof fname);
+    strncat(fname, ".wav", sizeof fname);
     double iLength;
     Uint16 osc_add1, osc_add2, osc_ticks=0,
     osc_ticks2,repeats=0, repeats2=0;
@@ -508,7 +527,8 @@ if (pitch2){
     }
 
     int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
-    int bar = testbuf.saveToFile("output.wav");
+    //int bar = testbuf.saveToFile("output.wav");
+    int bar = testbuf.saveToFile(fname);
     testsnd.setBuffer(testbuf);
     testsnd.setLoop(true);
     testsnd.play();
