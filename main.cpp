@@ -49,7 +49,7 @@ byte pgm_read_word(unsigned int* pointer) {
 #define WAVES   7
 #define NUM_WAVES 7
 #define NUM_KNOBS 10
-#define SAMPLES 16001*2
+#define SAMPLES 16001*1
 
 #define set_bit(v,b) v |= _BV(b)
 #define clear_bit(v,b) v &= ~_BV(b)
@@ -74,13 +74,13 @@ byte pgm_read_word(unsigned int* pointer) {
 const char *potnames[] = {"OSC_1",
                             " VOL ",
                             " FRQ ",
-                            "PULSE",
-                            " GAP ",
+                            "ATTAC",
+                            "DECAY",
                             "OSC_2",
                             " AMP ",
                             " FRQ ",
-                            "PULSE",
-                            " GAP "};
+                            "SUSTA",
+                            "RELEA"};
 #define POTRAD 6
 
 // parameters
@@ -91,7 +91,7 @@ uint8_t envfreq = 0; // envelope period
 uint8_t pulse = 0; // osc1 envelope period
 uint8_t gap = 0; // osc1 envelope period
 uint8_t envwidth = 255; // envelope duty cycle
-volatile int8_t wavenum = 7; // oscillator waveform
+volatile int8_t wavenum = 0; // oscillator waveform
 uint8_t lfowavenum = 7; // lfo waveform
 uint8_t vol = 128; // main osc volume
 
@@ -104,6 +104,8 @@ uint16_t envtimer = 0; // envelope value, counts from 0 to envfreq
 volatile uint8_t envval = 1; // high or low; ANDed with output wave
 volatile uint16_t waveform;
 volatile uint8_t noteon = 1; // if note is on
+char ADSR = false;
+uint16_t Attack=SAMPLES/16, Decay=SAMPLES/16, Sustain=SAMPLES/4, Release=SAMPLES/16;
 
 // my stuff
 float px1 = viewWidth/4, py1 = viewHeight/4,pa=0;
@@ -171,7 +173,7 @@ void increaseCurrentPot(){
     if (lfowavenum < NUM_WAVES) { lfowavenum++; } else {lfowavenum=0;}
         break;
     case 8:
-    if (envwidth < 255) { envwidth++; } else {envwidth=0;}
+    if (Sustain < SAMPLES/4-256) { Sustain += 256; } else {Sustain = SAMPLES/4;}
         break;
     case 6:
     if (lfodepth < 255-8) { lfodepth += 8 ; } else {lfodepth = 255;}
@@ -186,16 +188,16 @@ void increaseCurrentPot(){
     if (vol < 255-5) { vol+= 5 ; } else {vol = 255;}
         break;
     case 9:
-    if (envfreq < 255-10) { envfreq += 10 ; } else { envfreq = 255;}
+    if (Release < SAMPLES/4-256) { Release += 256; } else {Release = SAMPLES/4;}
         break;
     case 0:
     if (wavenum < NUM_WAVES) { wavenum++; } else { wavenum=0; }
         break;
     case 3:
-    if (pulse < 16) { pulse ++; } else {pulse = 16;}
+    if (Attack < SAMPLES/4-256) { Attack += 256; } else {Attack = SAMPLES/4;}
         break;
     case 4:
-    if (gap < 16) { gap ++; } else {gap = 16;}
+    if (Decay < SAMPLES/4-256) { Decay += 256; } else {Decay = SAMPLES/4;}
         break;
     default:
         break;
@@ -208,7 +210,7 @@ void decreaseCurrentPot(){
     if (lfowavenum > 0) { lfowavenum--; } else {lfowavenum=NUM_WAVES;}
         break;
     case 8:
-    if (envwidth > 0) { envwidth--; } else {envwidth=255;}
+    if (Sustain > 256) { Sustain -= 255; } else {Sustain = 1;}
         break;
     case 6:
     if (lfodepth > 8) { lfodepth -= 8 ; } else {lfodepth = 0;}
@@ -223,16 +225,16 @@ void decreaseCurrentPot(){
     if (vol > 5) { vol-= 5 ; } else {vol = 0;}
         break;
     case 9:
-    if (envfreq > 10) { envfreq -= 10 ; } else { envfreq = 0;}
+    if (Release > 256) { Release -= 255; } else {Release = 1;}
         break;
     case 0:
     if (wavenum > 0) { wavenum--; } else { wavenum=NUM_WAVES; }
         break;
     case 3:
-    if (pulse > 0) { pulse--; } else {pulse=0;}
+    if (Attack > 256) { Attack -= 255; } else {Attack = 1;}
         break;
     case 4:
-    if (gap > 0) { gap--; } else {gap=0;}
+    if (Decay > 256) { Decay -= 255; } else {Decay = 1;}
         break;
     default:
         break;
@@ -246,24 +248,25 @@ void updatePots() {
     drawPot(7+POTRAD+0*viewWidth/5,viewHeight/3,wavenum,0,8,0);
     drawPot(7+POTRAD+1*viewWidth/5,viewHeight/3,vol,0,0xff,1);
     drawPot(7+POTRAD+2*viewWidth/5,viewHeight/3,pitch,FMIN,FMAX,2);
-    drawPot(7+POTRAD+3*viewWidth/5,viewHeight/3,pulse,0,16,3);
-    drawPot(7+POTRAD+4*viewWidth/5,viewHeight/3,gap,0,16,4);
+    drawPot(7+POTRAD+3*viewWidth/5,viewHeight/3,Attack,0,SAMPLES/4,3);
+    drawPot(7+POTRAD+4*viewWidth/5,viewHeight/3,Decay,0,SAMPLES/4,4);
 
     // row 2
     drawPot(7+POTRAD+0*viewWidth/5,2*viewHeight/3+10,lfowavenum,0,8,5);
     drawPot(7+POTRAD+1*viewWidth/5,2*viewHeight/3+10,lfodepth,0,255,6);
     drawPot(7+POTRAD+2*viewWidth/5,2*viewHeight/3+10,lfofreq,0,400,7);
-    drawPot(7+POTRAD+3*viewWidth/5,2*viewHeight/3+10,envwidth,0,255,8);
-    drawPot(7+POTRAD+4*viewWidth/5,2*viewHeight/3+10,envfreq,0,255,9);
+    drawPot(7+POTRAD+3*viewWidth/5,2*viewHeight/3+10,Sustain,0,SAMPLES/4,8);
+    drawPot(7+POTRAD+4*viewWidth/5,2*viewHeight/3+10,Release,0,SAMPLES/4,9);
+
+    if (ADSR) TV.print(7+POTRAD+3*viewWidth/5,5,"ADSR ON ");
+    if (!ADSR) TV.print(7+POTRAD+3*viewWidth/5,5,"ADSR OFF");
 
 }
 
 int getInput() {
 
       if (Controller.firePressed()) {
-        if (mysound.getStatus() == 0) {
-            noteon = 1;
-            } else {noteon=0;}
+            ADSR = !ADSR;
             return 1;
       }
       if (Controller.upPressed()) {
@@ -294,9 +297,9 @@ int getInput() {
 
 void mixbuffers(float pitch1, float pitch2){
     double iLength;
-    Uint16 osc_add1, osc_add2, osc_ticks=0, env_ticks, pulse_ticks, gap_ticks,
-    osc_ticks2,osc_value1=0,osc_value2 = 0,repeats=0, repeats2=0;
-    Int16 dResult, noise, pulsecount=0, gapcount=0;
+    Uint16 osc_add1, osc_add2, osc_ticks=0,
+    osc_ticks2,repeats=0, repeats2=0;
+    Int16 dResult, noise;
     sf::Sound testsnd;
     sf::SoundBuffer testbuf;
     iLength = SAMPLES;// 2 sec at 8khz samples
@@ -304,9 +307,6 @@ void mixbuffers(float pitch1, float pitch2){
     Int16 sbuf2[SAMPLES]; // osc 2 results
     osc_ticks = 8000 / pitch1; // how many ticks per cycle
     if (pitch2) osc_ticks2 = 8000 / pitch2; // lfo
-    if (envfreq) env_ticks = 8000 / envfreq ; // on off envelope
-    if (pulse) pulse_ticks = 8000 / pulse ; // pulses per sec
-    if (gap) gap_ticks = 8000 / gap ; // pulses per sec
 
     repeats = SAMPLES / osc_ticks;
     if (repeats % 2) repeats--;
@@ -315,7 +315,6 @@ void mixbuffers(float pitch1, float pitch2){
     if (pitch2) osc_add2 = 65536/osc_ticks2;
     if (pitch2) repeats2 = iLength / osc_ticks2;
 
-    pulsecount = pulse_ticks; gapcount = pulsecount + gap_ticks;
     std::vector<sf::Int16> FinalSamplesVector;
     FinalSamplesVector.reserve(iLength);
 
@@ -391,15 +390,7 @@ void mixbuffers(float pitch1, float pitch2){
             if ((j+1) % osc_ticks == 0) {
              noise =  rand() % 65536 - 32767;
             }
-            if (pulse) {
-                if (i > pulsecount && i < gapcount)
-                    {
-                    sbuf[i*osc_ticks+j] = dResult;
-                    } else {
-                    sbuf[i*osc_ticks+j] = 0;
-                    }
-                if (i > gapcount) {pulsecount = i + pulse_ticks-gap_ticks; gapcount = pulsecount + gap_ticks;}
-            } else { sbuf[i*osc_ticks+j] = dResult; }
+            sbuf[i*osc_ticks+j] = dResult;
         }
     }
 
@@ -476,15 +467,7 @@ if (pitch2){
             if ((j+1) % osc_ticks2 == 0) {
              noise =  rand() % 65536 - 32767;
             }
-            if (pulse) {
-                if (i > pulsecount && i < gapcount)
-                    {
-                    sbuf2[i*osc_ticks2+j] = dResult;
-                    } else {
-                    sbuf2[i*osc_ticks2+j] = 0;
-                    }
-                if (i > gapcount) {pulsecount = i + pulse_ticks-gap_ticks; gapcount = pulsecount + gap_ticks;}
-            } else { sbuf2[i*osc_ticks2+j] = dResult; }
+            sbuf2[i*osc_ticks2+j] = dResult;
         }
     }
 } else {
@@ -492,6 +475,9 @@ if (pitch2){
     }
 
     // Add TOGETHER OSC1 AND OSC2
+    float DecayRate = (float)Decay / (65536 - (float)vol*256);
+    uint16_t ReleaseRate = (float)Release / ((float)vol*256);
+
     for(int i = 1; i < iLength; i++)
     {
     Int16 a,b;
@@ -504,7 +490,20 @@ if (pitch2){
     // If samples are on opposite sides of the 0-crossing, mixed signal should reflect that samples cancel each other out somewhat
             : a + b);
 
-    //dResult = (a*b)/255;
+    if (ADSR) {
+        if (i<=Attack) {
+        dResult = dResult*i/Attack*255/vol;
+        }
+        if (i>Attack && i < Attack+Decay) {
+        dResult = dResult*255/vol-dResult*(i-Attack)/Decay;
+        }
+        if (i>Attack+Decay+Sustain) {
+        dResult = dResult - dResult*(i-Attack-Decay-Sustain)/Release;
+        }
+        if (i>Attack+Decay+Sustain+Release) {
+        dResult = 0;
+        }
+    }
     FinalSamplesVector.push_back(static_cast<sf::Int16>(dResult));
     }
 
