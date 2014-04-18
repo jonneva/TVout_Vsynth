@@ -91,9 +91,9 @@ uint8_t envfreq = 0; // envelope period
 uint8_t pulse = 0; // osc1 envelope period
 uint8_t gap = 0; // osc1 envelope period
 uint8_t envwidth = 255; // envelope duty cycle
-volatile int8_t wavenum = 0; // oscillator waveform
+volatile int8_t wavenum = 7; // oscillator waveform
 uint8_t lfowavenum = 7; // lfo waveform
-uint8_t vol = 128; // main osc volume
+uint8_t vol = 32; // main osc volume
 
 // state
 uint16_t outpitch = 0; // OCR1A value
@@ -136,7 +136,8 @@ void drawPot(int x,int y,float potvalue,int minval, int maxval,int potnum) {
         tempwavenum=lfowavenum;
         if (osc2_mode == 1) strcpy(name, "FM MOD");
         if (osc2_mode == 2) strcpy(name, "AM MOD");
-    }
+        if (osc2_mode == 3) strcpy(name, "FILTER ");
+        }
     switch (tempwavenum) {
         case 0:
         TV.print(x-6/2*4-1,y-POTRAD*2-5,"square");
@@ -184,7 +185,7 @@ void increaseCurrentPot(){
     if (lfodepth < 255-8) { lfodepth += 8 ; } else {lfodepth = 255;}
         break;
     case 7:
-    if (lfofreq < 400-5) { lfofreq += 5 ; } else {lfofreq = 400;}
+    if (lfofreq < 100) { lfofreq ++ ; } else {lfofreq = 100;}
         break;
     case 2:
     if (pitch < FMAX-10) { pitch+= 10 ; } else {pitch = FMAX;}
@@ -218,10 +219,10 @@ void decreaseCurrentPot(){
     if (Sustain > 256) { Sustain -= 255; } else {Sustain = 1;}
         break;
     case 6:
-    if (lfodepth > 8) { lfodepth -= 8 ; } else {lfodepth = 0;}
+    if (lfodepth < 8) { lfodepth = 255 ; } else {lfodepth -= 8;}
         break;
     case 7:
-    if (lfofreq > 5) { lfofreq -= 5 ; } else {lfofreq = 0;}
+    if (lfofreq > 0) { lfofreq -- ; } else {lfofreq = 0;}
         break;
     case 2:
     if (pitch > FMIN) { pitch-= 10 ; } else {pitch = FMIN;}
@@ -259,7 +260,7 @@ void updatePots() {
     // row 2
     drawPot(7+POTRAD+0*viewWidth/5,2*viewHeight/3+10,lfowavenum,0,8,5);
     drawPot(7+POTRAD+1*viewWidth/5,2*viewHeight/3+10,lfodepth,0,255,6);
-    drawPot(7+POTRAD+2*viewWidth/5,2*viewHeight/3+10,lfofreq,0,400,7);
+    drawPot(7+POTRAD+2*viewWidth/5,2*viewHeight/3+10,lfofreq,0,100,7);
     drawPot(7+POTRAD+3*viewWidth/5,2*viewHeight/3+10,Sustain,0,SAMPLES/4,8);
     drawPot(7+POTRAD+4*viewWidth/5,2*viewHeight/3+10,Release,0,SAMPLES/4,9);
 
@@ -270,7 +271,9 @@ void updatePots() {
 int getInput() {
 
       if (Controller.firePressed()) {
-            ADSR = !ADSR;
+            if (currentPot == 3 || currentPot == 4 || currentPot == 8 || currentPot == 9) ADSR = !ADSR;
+            if (currentPot == 5) osc2_mode ++;
+            if (osc2_mode == 4) osc2_mode =0;
             return 1;
       }
       if (Controller.upPressed()) {
@@ -300,7 +303,7 @@ int getInput() {
 
 
 void mixbuffers(float pitch1, float pitch2){
-
+    //if (osc2_mode == 1) lfodepth = 255;
     double iLength;
     Uint16 osc_add1, osc_add2, osc_ticks=0,
     osc_ticks2,repeats=0, repeats2=0;
@@ -348,10 +351,10 @@ void mixbuffers(float pitch1, float pitch2){
             if (wavenum == 1) { // triangle
                 if (j < osc_ticks / 2) {
                 //first half of cycle
-                dResult = j*osc_add1 -32767;
+                dResult = j*osc_add1*2 -32767;
                 } else {
                 //2nd half of cycle
-                dResult = 32767-j*osc_add1;
+                dResult = 32767-(j-osc_ticks/2)*osc_add1*2;
                 }
             }
 
@@ -402,7 +405,7 @@ void mixbuffers(float pitch1, float pitch2){
     noise = rand() % 65536 - 32767; envtimer=0;
     // CALCULATE OSCILLATOR 2
 if (pitch2){
-    for(uint32_t i = 0; i < repeats2; i++) // the length of the entire sample
+    for(uint32_t i = 0; i < repeats2+2; i++) // the length of the entire sample
     {
             for (uint32_t j=0; j<osc_ticks2; j++) {
             if (lfowavenum == 7) { // off
@@ -425,10 +428,10 @@ if (pitch2){
             if (lfowavenum == 1) { // triangle
                 if (j < osc_ticks2 / 2) {
                 //first half of cycle
-                dResult = j*osc_add2 -32767;
+                dResult = j*osc_add2*2 -32767;
                 } else {
                 //2nd half of cycle
-                dResult = 32767-j*osc_add2;
+                dResult = 32767-(j-osc_ticks2/2)*osc_add2*2;
                 }
             }
 
@@ -472,7 +475,8 @@ if (pitch2){
             if ((j+1) % osc_ticks2 == 0) {
              noise =  rand() % 65536 - 32767;
             }
-            sbuf2[i*osc_ticks2+j] = dResult;
+
+            if (i*osc_ticks2+j<iLength) sbuf2[i*osc_ticks2+j] = dResult;
         }
     }
 } else {
@@ -483,17 +487,30 @@ if (pitch2){
     float DecayRate = (float)Decay / (65536 - (float)vol*256);
     uint16_t ReleaseRate = (float)Release / ((float)vol*256);
 
-    for(int i = 1; i < iLength; i++)
+    for(int i = 0; i < iLength; i++)
     {
-    Int16 a,b;
-    a = (sbuf[i]*vol)/255; b =(sbuf2[i]*lfodepth)/255;
-    dResult =
-    // If both samples are negative, mixed signal must have an amplitude between the lesser of A and B, and the minimum permissible negative amplitude
-    a < 0 && b < 0 ? ((int)a + (int)b) - (((int)a * (int)b)/INT16_MIN) :
-    // If both samples are positive, mixed signal must have an amplitude between the greater of A and B, and the maximum permissible positive amplitude
-    ( a > 0 && b > 0  ? ((int)a + (int)b) - (((int)a * (int)b)/INT16_MAX)
-    // If samples are on opposite sides of the 0-crossing, mixed signal should reflect that samples cancel each other out somewhat
-            : a + b);
+    Int16 a,b; Uint16 c;
+    if (osc2_mode == 0) {
+        // simple addition mode = average of 2 samples
+        a = (sbuf[i]*vol)/255; b =(sbuf2[i]*lfodepth)/255;
+        dResult = a+b/2;
+    }
+    if (osc2_mode == 1) {
+        // FM modulation mode
+        Uint32 pointer = 0;
+        c = (sbuf2[i]*lfodepth)/255+32767;
+        c = c/256/8;
+        if (c>0) c = osc_ticks/c;
+        pointer = i + c; //pointer goes from 0 to 256
+        if (i+c > iLength) pointer -= iLength; // loop around sample 1
+        dResult = (sbuf[pointer]*vol)/255;
+    }
+
+    if (osc2_mode == 2) {
+        // AM modulation mode
+        a = (sbuf[i]*vol)/255; b =(sbuf2[i]*lfodepth)/255;
+        dResult = a*b/255;
+    }
 
     if (ADSR) {
         if (i<=Attack) {
@@ -512,7 +529,8 @@ if (pitch2){
     FinalSamplesVector.push_back(static_cast<sf::Int16>(dResult));
     }
 
-    int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
+    //int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
+    int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], iLength, 1, 8000);
     int bar = testbuf.saveToFile("output.wav");
     testsnd.setBuffer(testbuf);
     testsnd.setLoop(true);
