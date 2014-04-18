@@ -105,6 +105,7 @@ volatile uint8_t envval = 1; // high or low; ANDed with output wave
 volatile uint16_t waveform;
 volatile uint8_t noteon = 1; // if note is on
 char ADSR = false;
+char osc2_mode = 0;
 uint16_t Attack=SAMPLES/16, Decay=SAMPLES/16, Sustain=SAMPLES/4, Release=SAMPLES/16;
 
 // my stuff
@@ -131,7 +132,11 @@ void drawPot(int x,int y,float potvalue,int minval, int maxval,int potnum) {
     TV.print(x-6/2*4-1,y-POTRAD*2-5,"       ");
     if (potnum == 5 || potnum == 0) {
     int tempwavenum = wavenum;
-    if (potnum == 5) tempwavenum=lfowavenum;
+    if (potnum == 5) {
+        tempwavenum=lfowavenum;
+        if (osc2_mode == 1) strcpy(name, "FM MOD");
+        if (osc2_mode == 2) strcpy(name, "AM MOD");
+    }
     switch (tempwavenum) {
         case 0:
         TV.print(x-6/2*4-1,y-POTRAD*2-5,"square");
@@ -260,7 +265,6 @@ void updatePots() {
 
     if (ADSR) TV.print(7+POTRAD+3*viewWidth/5,5,"ADSR ON ");
     if (!ADSR) TV.print(7+POTRAD+3*viewWidth/5,5,"ADSR OFF");
-
 }
 
 int getInput() {
@@ -296,25 +300,7 @@ int getInput() {
 
 
 void mixbuffers(float pitch1, float pitch2){
-    char fname[128];
-    /*char integer_string[32];
-int integer = 1234;
 
-sprintf(integer_string, "%d", integer);
-
-Then to append it to your other char*, use strcat():*/
-    strcpy(fname, "w");
-    strncat(fname, wavenum, sizeof fname);
-    strncat(fname, "_a", sizeof fname);strncat(fname, vol, sizeof fname);
-    strncat(fname, "_f", sizeof fname);strncat(fname, pitch, sizeof fname);
-    strncat(fname, "_A", sizeof fname);strncat(fname, Attack, sizeof fname);
-    strncat(fname, "_D", sizeof fname);strncat(fname, Decay, sizeof fname);
-    strncat(fname, "_w", sizeof fname);strncat(fname, lfowavenum, sizeof fname);
-    strncat(fname, "_a", sizeof fname);strncat(fname, lfodepth, sizeof fname);
-    strncat(fname, "_f", sizeof fname);strncat(fname, lfofreq, sizeof fname);
-    strncat(fname, "_S", sizeof fname);strncat(fname, Sustain, sizeof fname);
-    strncat(fname, "_R", sizeof fname);strncat(fname, Release, sizeof fname);
-    strncat(fname, ".wav", sizeof fname);
     double iLength;
     Uint16 osc_add1, osc_add2, osc_ticks=0,
     osc_ticks2,repeats=0, repeats2=0;
@@ -527,8 +513,7 @@ if (pitch2){
     }
 
     int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
-    //int bar = testbuf.saveToFile("output.wav");
-    int bar = testbuf.saveToFile(fname);
+    int bar = testbuf.saveToFile("output.wav");
     testsnd.setBuffer(testbuf);
     testsnd.setLoop(true);
     testsnd.play();
