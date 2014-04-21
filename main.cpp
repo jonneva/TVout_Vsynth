@@ -111,7 +111,7 @@ int currentPot =0;
 
 
 // low pass filter
-int lag1order( int x, long last_y, float tau )
+int lag1order( int x, long last_y, float tau, int amp )
 {
 long x_scaled;
 float temp;
@@ -138,7 +138,7 @@ Y+=K*(X-Y);
 
 new output = last output + k * (new reading - last output)?*/
 
-return(y_scaled*6/SCALE10);
+return(y_scaled*amp/SCALE10);
 }
 
 
@@ -339,7 +339,7 @@ int getInput() {
 void mixbuffers(float pitch1, float pitch2){
     //if (osc2_mode == 1) lfodepth = 255;
     double iLength;
-    Uint16 osc_add1, osc_add2, osc_ticks=0,phaser=0,phaserCount= 0, phaserToggle = 0,
+    Uint16 osc_add1, osc_add2, osc_ticks=0,phaser=10,phaserCount= 0, phaserToggle = 0,
     osc_ticks2,repeats=0, repeats2=0;
     Int16 dResult, noise, phaserDelta=1;
     sf::Sound testsnd;
@@ -350,6 +350,8 @@ void mixbuffers(float pitch1, float pitch2){
     Int16 sbuf2[SAMPLES]; // osc 2 results
     osc_ticks = 8000 / pitch1; // how many ticks per cycle
     if (pitch2) osc_ticks2 = 8000 / pitch2; // lfo
+
+    phaserDelta = pitch1 / 50 + 1;
 
     repeats = SAMPLES / osc_ticks;
     if (repeats % 2) repeats--;
@@ -439,10 +441,9 @@ void mixbuffers(float pitch1, float pitch2){
                 phaserToggle = !phaserToggle;
                 phaser += phaserDelta;
                 phaserCount =0;
+                if (phaser > 100 || phaser < 10) phaserDelta *= -1;
               }
-              if (phaser == 255 || phaser == 0) {
-                phaserDelta *= -1;
-              }
+
             }
 
 
@@ -456,6 +457,7 @@ void mixbuffers(float pitch1, float pitch2){
     noise = rand() % 65536 - 32767;
     // CALCULATE OSCILLATOR 2
 if (pitch2){
+    phaserDelta = pitch2; phaserCount = 0; phaser = 50;
     for(uint32_t i = 0; i < repeats2+2; i++) // the length of the entire sample
     {
             for (uint32_t j=0; j<osc_ticks2; j++) {
@@ -523,6 +525,19 @@ if (pitch2){
                 dResult = -noise;
                 }
             }
+
+            if (lfowavenum == 7) { // phaser
+              phaserCount++;
+              if (phaserToggle) dResult = 32767 * lfodepth/255;
+              if (!phaserToggle) dResult = -32767 * lfodepth/255;
+              if (phaserCount>phaser) {
+                phaserToggle = !phaserToggle;
+                phaser += phaserDelta;
+                phaserCount =0;
+                if (phaser > pitch2*50 || phaser < 5) phaserDelta *= -1;
+              }
+            }
+
             if ((j+1) % osc_ticks2 == 0) {
              noise =  rand() % 65536 - 32767;
             }
@@ -573,7 +588,7 @@ if (pitch2){
         if (i == 0) {
         lastoutput = a;
         } else {
-        dResult = lag1order(a, lastoutput, TAU*((float)b/2+127)/128 );
+        dResult = lag1order(a, lastoutput, TAU*(float)b/256, b/32 );
         lastoutput = dResult;
         }
     }
@@ -600,9 +615,9 @@ if (pitch2){
     if (filter) {
     // Low pass filter
         if (i == 0) {
-        lastoutput = dResult;
+        lastoutput = 0;
         } else {
-        dResult = lag1order(dResult, lastoutput, TAU);
+        dResult = lag1order(dResult, lastoutput, TAU, 8);
         lastoutput = dResult;
         }
     }
