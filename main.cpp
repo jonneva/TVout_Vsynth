@@ -47,7 +47,7 @@ byte pgm_read_word(unsigned int* pointer) {
 #define FMAX    1200
 #define FMIN    10
 #define WAVES   7
-#define NUM_WAVES 7
+#define NUM_WAVES 8
 #define NUM_KNOBS 10
 #define SAMPLES 16001*2
 
@@ -92,8 +92,8 @@ uint16_t pitch = 200; // set pitch
 uint16_t lfofreq = 0; // lfo period
 uint16_t lfodepth = 0; // lfo wave amplitude
 uint8_t envfreq = 0; // envelope period
-volatile int8_t wavenum = 7; // oscillator waveform
-uint8_t lfowavenum = 7; // lfo waveform
+volatile int8_t wavenum = 8; // oscillator waveform
+uint8_t lfowavenum = 8; // lfo waveform
 uint8_t vol = 32; // main osc volume
 
 // state
@@ -188,6 +188,9 @@ void drawPot(int x,int y,float potvalue,int minval, int maxval,int potnum) {
         TV.print(x-6/2*4-1,y-POTRAD*2-5,"noise");
         break;
         case 7:
+        TV.print(x-6/2*4-1,y-POTRAD*2-5,"phaser");
+        break;
+        case 8:
         TV.print(x-6/2*4-1,y-POTRAD*2-5," off ");
         break;
 
@@ -278,14 +281,14 @@ void decreaseCurrentPot(){
 void updatePots() {
 
     // row 1
-    drawPot(7+POTRAD+0*viewWidth/5,viewHeight/3,wavenum,0,8,0);
+    drawPot(7+POTRAD+0*viewWidth/5,viewHeight/3,wavenum,0,9,0);
     drawPot(7+POTRAD+1*viewWidth/5,viewHeight/3,vol,0,0xff,1);
     drawPot(7+POTRAD+2*viewWidth/5,viewHeight/3,pitch,FMIN,FMAX,2);
     drawPot(7+POTRAD+3*viewWidth/5,viewHeight/3,Attack,0,SAMPLES/4,3);
     drawPot(7+POTRAD+4*viewWidth/5,viewHeight/3,Decay,0,SAMPLES/4,4);
 
     // row 2
-    drawPot(7+POTRAD+0*viewWidth/5,2*viewHeight/3+10,lfowavenum,0,8,5);
+    drawPot(7+POTRAD+0*viewWidth/5,2*viewHeight/3+10,lfowavenum,0,9,5);
     drawPot(7+POTRAD+1*viewWidth/5,2*viewHeight/3+10,lfodepth,0,255,6);
     drawPot(7+POTRAD+2*viewWidth/5,2*viewHeight/3+10,lfofreq,0,100,7);
     drawPot(7+POTRAD+3*viewWidth/5,2*viewHeight/3+10,Sustain,0,SAMPLES/4,8);
@@ -336,9 +339,9 @@ int getInput() {
 void mixbuffers(float pitch1, float pitch2){
     //if (osc2_mode == 1) lfodepth = 255;
     double iLength;
-    Uint16 osc_add1, osc_add2, osc_ticks=0,
+    Uint16 osc_add1, osc_add2, osc_ticks=0,phaser=0,phaserCount= 0, phaserToggle = 0,
     osc_ticks2,repeats=0, repeats2=0;
-    Int16 dResult, noise;
+    Int16 dResult, noise, phaserDelta=1;
     sf::Sound testsnd;
     sf::SoundBuffer testbuf;
     long lastoutput; // for low pass filter
@@ -363,7 +366,7 @@ void mixbuffers(float pitch1, float pitch2){
     for(uint32_t i = 0; i < repeats; i++) // the length of the entire sample
     {
             for (uint32_t j=0; j<osc_ticks; j++) {
-            if (wavenum == 7) { // off
+            if (wavenum == 8) { // off
                 dResult = 0;
             }
 
@@ -427,6 +430,22 @@ void mixbuffers(float pitch1, float pitch2){
                 dResult = -noise;
                 }
             }
+
+            if (wavenum == 7) { // phaser
+              phaserCount++;
+              if (phaserToggle) dResult = 32767 * vol/255;
+              if (!phaserToggle) dResult = -32767 * vol/255;
+              if (phaserCount>phaser) {
+                phaserToggle = !phaserToggle;
+                phaser += phaserDelta;
+                phaserCount =0;
+              }
+              if (phaser == 255 || phaser == 0) {
+                phaserDelta *= -1;
+              }
+            }
+
+
             if ((j+1) % osc_ticks == 0) {
              noise =  rand() % 65536 - 32767;
             }
@@ -440,7 +459,7 @@ if (pitch2){
     for(uint32_t i = 0; i < repeats2+2; i++) // the length of the entire sample
     {
             for (uint32_t j=0; j<osc_ticks2; j++) {
-            if (lfowavenum == 7) { // off
+            if (lfowavenum == 8) { // off
                 dResult = 0;
             }
 
@@ -554,7 +573,7 @@ if (pitch2){
         if (i == 0) {
         lastoutput = a;
         } else {
-        dResult = lag1order(a, lastoutput, TAU*(float)b/255 );
+        dResult = lag1order(a, lastoutput, TAU*((float)b/2+127)/128 );
         lastoutput = dResult;
         }
     }
