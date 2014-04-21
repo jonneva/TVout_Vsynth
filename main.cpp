@@ -49,7 +49,7 @@ byte pgm_read_word(unsigned int* pointer) {
 #define WAVES   7
 #define NUM_WAVES 7
 #define NUM_KNOBS 10
-#define SAMPLES 16001*1
+#define SAMPLES 16001*2
 
 #define set_bit(v,b) v |= _BV(b)
 #define clear_bit(v,b) v &= ~_BV(b)
@@ -61,14 +61,15 @@ byte pgm_read_word(unsigned int* pointer) {
 #define PIN(x) PASTE(PIN,x)
 #define DDR(x) PASTE(DDR,x)
 
-#define AUDIO B
-#define AUDIO_PIN 0
+// Low pass filter
 
-#define LEDS B
-#define LFO_LED_PIN 2
-#define ENV_LED_PIN 3
-#define PWR_LED_PIN 4
-
+#define SF10 (10)
+#define SCALE10 (2^SF10)
+#define DT (0.01f)
+#define TAU (0.9f)
+#define K ((float)DT/((float)TAU+(float)DT))
+#define K_SCALE10 (K*(float)SCALE10) // Note this is 102, truncation of 0.4 doesn't affect filter really
+#define FILTER_IC (long)(0.0*SCALE10) // Note this is 0 as a long
 
 
 const char *potnames[] = {"OSC_1",
@@ -88,9 +89,6 @@ uint16_t pitch = 200; // set pitch
 uint16_t lfofreq = 0; // lfo period
 uint16_t lfodepth = 0; // lfo wave amplitude
 uint8_t envfreq = 0; // envelope period
-uint8_t pulse = 0; // osc1 envelope period
-uint8_t gap = 0; // osc1 envelope period
-uint8_t envwidth = 255; // envelope duty cycle
 volatile int8_t wavenum = 7; // oscillator waveform
 uint8_t lfowavenum = 7; // lfo waveform
 uint8_t vol = 32; // main osc volume
@@ -98,13 +96,8 @@ uint8_t vol = 32; // main osc volume
 // state
 uint16_t outpitch = 0; // OCR1A value
 uint8_t lfotimer = 0; // lfo value, counts from 0 to lfofreq
-uint16_t lfoval = 0; // amount to add to output pitch
-uint16_t lfodelta = 0;
-uint16_t envtimer = 0; // envelope value, counts from 0 to envfreq
-volatile uint8_t envval = 1; // high or low; ANDed with output wave
-volatile uint16_t waveform;
-volatile uint8_t noteon = 1; // if note is on
-char ADSR = false;
+
+char ADSR = false; char filter = false;
 char osc2_mode = 0;
 uint16_t Attack=SAMPLES/16, Decay=SAMPLES/16, Sustain=SAMPLES/4, Release=SAMPLES/16;
 
@@ -113,6 +106,36 @@ float px1 = viewWidth/4, py1 = viewHeight/4,pa=0;
 float px2 = viewWidth/2, py2 = viewHeight/4;
 int currentPot =0;
 
+
+// low pass filter
+int lag1order( int x, long last_y )
+{
+long x_scaled;
+float temp;
+static long y_scaled;
+
+temp = K;
+temp = K_SCALE10;
+y_scaled = last_y;
+x_scaled = x*SCALE10;
+temp = x_scaled - y_scaled;
+temp = temp * K_SCALE10;
+temp = temp / SCALE10;
+y_scaled = y_scaled + temp;
+//y_scaled += ((K_SCALE10*(x_scaled-y_scaled))/SCALE10);
+// Note: if A is scaling this is (KA*(XA-YA))/A = KAX-KAY
+// Same order of scaling as y_scaled for the +=
+/*So in C we could use the following
+Yn = Yn-1 + K*(Xn - Yn-1)
+Y = Y + K*(X - Y);
+
+Or better yet
+Y+=K*(X-Y);
+
+new output = last output + k * (new reading - last output)?*/
+
+return(y_scaled/SCALE10);
+}
 
 
 void drawPot(int x,int y,float potvalue,int minval, int maxval,int potnum) {
@@ -266,12 +289,16 @@ void updatePots() {
 
     if (ADSR) TV.print(7+POTRAD+3*viewWidth/5,5,"ADSR ON ");
     if (!ADSR) TV.print(7+POTRAD+3*viewWidth/5,5,"ADSR OFF");
+    if (filter) TV.print(7+POTRAD+0*viewWidth/5,5,"LO-PASS ON ");
+    if (!filter) TV.print(7+POTRAD+0*viewWidth/5,5,"LO-PASS OFF");
+
 }
 
 int getInput() {
 
       if (Controller.firePressed()) {
             if (currentPot == 3 || currentPot == 4 || currentPot == 8 || currentPot == 9) ADSR = !ADSR;
+            if (currentPot == 0 || currentPot == 1 || currentPot == 2) filter = !filter;
             if (currentPot == 5) osc2_mode ++;
             if (osc2_mode == 4) osc2_mode =0;
             return 1;
@@ -310,6 +337,7 @@ void mixbuffers(float pitch1, float pitch2){
     Int16 dResult, noise;
     sf::Sound testsnd;
     sf::SoundBuffer testbuf;
+    long lastoutput; // for low pass filter
     iLength = SAMPLES;// 2 sec at 8khz samples
     Int16 sbuf[SAMPLES]; // osc 1 results
     Int16 sbuf2[SAMPLES]; // osc 2 results
@@ -326,7 +354,7 @@ void mixbuffers(float pitch1, float pitch2){
     std::vector<sf::Int16> FinalSamplesVector;
     FinalSamplesVector.reserve(iLength);
 
-    noise =  rand() % 65536 - 32767; envtimer=0;
+    noise =  rand() % 65536 - 32767;
     // CALCULATE OSCILLATOR 1
     for(uint32_t i = 0; i < repeats; i++) // the length of the entire sample
     {
@@ -402,7 +430,7 @@ void mixbuffers(float pitch1, float pitch2){
         }
     }
 
-    noise = rand() % 65536 - 32767; envtimer=0;
+    noise = rand() % 65536 - 32767;
     // CALCULATE OSCILLATOR 2
 if (pitch2){
     for(uint32_t i = 0; i < repeats2+2; i++) // the length of the entire sample
@@ -484,12 +512,11 @@ if (pitch2){
     }
 
     // Add TOGETHER OSC1 AND OSC2
-    float DecayRate = (float)Decay / (65536 - (float)vol*256);
-    uint16_t ReleaseRate = (float)Release / ((float)vol*256);
 
+    Uint16 c,skipper=0;
     for(int i = 0; i < iLength; i++)
     {
-    Int16 a,b; Uint16 c;
+    Int16 a,b;
     if (osc2_mode == 0) {
         // simple addition mode = average of 2 samples
         a = (sbuf[i]*vol)/255; b =(sbuf2[i]*lfodepth)/255;
@@ -497,13 +524,18 @@ if (pitch2){
     }
     if (osc2_mode == 1) {
         // FM modulation mode
-        Uint32 pointer = 0;
-        c = (sbuf2[i]*lfodepth)/255+32767;
-        c = c/256/8;
-        if (c>0) c = osc_ticks/c;
-        pointer = i + c; //pointer goes from 0 to 256
-        if (i+c > iLength) pointer -= iLength; // loop around sample 1
-        dResult = (sbuf[pointer]*vol)/255;
+
+        if (skipper == 0) {
+            c = (sbuf2[i]*lfodepth)/255+32767;
+            c = c/256/16; // was c/256/8
+            if (c==0) c=1;
+            skipper = i+osc_ticks/c; // length = osc ticks if c = 0
+            dResult = (sbuf[i]*vol)/255;
+        }
+        if (i==skipper) {
+            i++; skipper = 0;
+            dResult = (sbuf[i]*vol)/255;
+        }
     }
 
     if (osc2_mode == 2) {
@@ -514,29 +546,42 @@ if (pitch2){
 
     if (ADSR) {
         if (i<=Attack) {
-        dResult = dResult*i/Attack*255/vol;
+        dResult = dResult*i/Attack;
         }
-        if (i>Attack && i < Attack+Decay) {
-        dResult = dResult*255/vol-dResult*(i-Attack)/Decay;
+        if (i>Attack && i <= Attack+Decay) {
+        dResult = dResult-dResult*2/3*(i-Attack)/Decay;
+        }
+        if (i>Attack+Decay && i <= Attack+Decay+Sustain)
+        {
+        dResult>>=1;
         }
         if (i>Attack+Decay+Sustain) {
-        dResult = dResult - dResult*(i-Attack-Decay-Sustain)/Release;
+        dResult = dResult*2/3 - dResult*2/3*(i-Attack-Decay-Sustain)/Release;
         }
-        if (i>Attack+Decay+Sustain+Release) {
+        if (i>=Attack+Decay+Sustain+Release) {
         dResult = 0;
         }
     }
-    FinalSamplesVector.push_back(static_cast<sf::Int16>(dResult));
+
+    if (filter) {
+    // Low pass filter
+        if (i == 0) {
+        lastoutput = dResult;
+        } else {
+        dResult = lag1order(dResult, lastoutput);
+        lastoutput = dResult;
+        }
     }
 
-    //int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
-    int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], iLength, 1, 8000);
+    FinalSamplesVector.push_back(static_cast<sf::Int16>(dResult*2/3));
+    }
+
+    int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
     int bar = testbuf.saveToFile("output.wav");
     testsnd.setBuffer(testbuf);
     testsnd.setLoop(true);
     testsnd.play();
     while (!getInput()) {
-    //TV.delay(100);
     }
     updatePots();
     TV.delay(100);
