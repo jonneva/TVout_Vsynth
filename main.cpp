@@ -65,8 +65,8 @@ byte pgm_read_word(unsigned int* pointer) {
 
 #define SF10 (10)
 #define SCALE10 (2^SF10)
-#define DT (0.01f)
-#define TAU (0.9f)
+#define DT (0.01f) // time
+#define TAU (0.9f) // time constant in sec/rad
 #define K ((float)DT/((float)TAU+(float)DT))
 #define K_SCALE10 (K*(float)SCALE10) // Note this is 102, truncation of 0.4 doesn't affect filter really
 #define FILTER_IC (long)(0.0*SCALE10) // Note this is 0 as a long
@@ -134,7 +134,7 @@ Y+=K*(X-Y);
 
 new output = last output + k * (new reading - last output)?*/
 
-return(y_scaled/SCALE10);
+return(y_scaled*8/SCALE10);
 }
 
 
