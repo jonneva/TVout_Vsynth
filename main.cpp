@@ -65,8 +65,11 @@ byte pgm_read_word(unsigned int* pointer) {
 
 #define SF10 (10)
 #define SCALE10 (2^SF10)
-#define DT (0.01f) // time
-#define TAU (0.9f) // time constant in sec/rad
+#define DT (0.01f) // time, was 0.01 originally
+#define TAU (0.9f) // time constant in sec/rad, was 0.9 originally
+                    // 0.9  = distorts at 70  hz, vol = 62
+                    // 0.45 = distorts at 180 hz
+                    // 0.12 = distorts at 440 hz
 #define K ((float)DT/((float)TAU+(float)DT))
 #define K_SCALE10 (K*(float)SCALE10) // Note this is 102, truncation of 0.4 doesn't affect filter really
 #define FILTER_IC (long)(0.0*SCALE10) // Note this is 0 as a long
@@ -108,7 +111,7 @@ int currentPot =0;
 
 
 // low pass filter
-int lag1order( int x, long last_y )
+int lag1order( int x, long last_y, float tau )
 {
 long x_scaled;
 float temp;
@@ -119,7 +122,8 @@ temp = K_SCALE10;
 y_scaled = last_y;
 x_scaled = x*SCALE10;
 temp = x_scaled - y_scaled;
-temp = temp * K_SCALE10;
+//temp = temp * K_SCALE10;
+temp = temp * ((float)DT/((float)tau+(float)DT))* (float)SCALE10;
 temp = temp / SCALE10;
 y_scaled = y_scaled + temp;
 //y_scaled += ((K_SCALE10*(x_scaled-y_scaled))/SCALE10);
@@ -134,7 +138,7 @@ Y+=K*(X-Y);
 
 new output = last output + k * (new reading - last output)?*/
 
-return(y_scaled*8/SCALE10);
+return(y_scaled*6/SCALE10);
 }
 
 
@@ -544,6 +548,17 @@ if (pitch2){
         dResult = a*b/255;
     }
 
+    if (osc2_mode == 3) {
+        // Filter modulation mode
+        a = (sbuf[i]*vol)/255; b =(sbuf2[i]*lfodepth)/255;
+        if (i == 0) {
+        lastoutput = a;
+        } else {
+        dResult = lag1order(a, lastoutput, TAU*(float)b/255 );
+        lastoutput = dResult;
+        }
+    }
+
     if (ADSR) {
         if (i<=Attack) {
         dResult = dResult*i/Attack;
@@ -568,12 +583,12 @@ if (pitch2){
         if (i == 0) {
         lastoutput = dResult;
         } else {
-        dResult = lag1order(dResult, lastoutput);
+        dResult = lag1order(dResult, lastoutput, TAU);
         lastoutput = dResult;
         }
     }
 
-    FinalSamplesVector.push_back(static_cast<sf::Int16>(dResult*2/3));
+    FinalSamplesVector.push_back(static_cast<sf::Int16>(dResult));
     }
 
     int foo = testbuf.loadFromSamples(&FinalSamplesVector[0], FinalSamplesVector.size(), 1, 8000);
